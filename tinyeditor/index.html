@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TinyEditor - JavaScript WYSIWYG Editor</title>
+<link rel="stylesheet" href="style.css" />
+<script type="text/javascript" src="tinyeditor.js"></script>
+</head>
+<body onLoad="">
+<form id="frm1" method="POST" action="out.php">
+<textarea name="input_O"style="width:400px; height:200px"></textarea><br>
+<textarea id="input" name="input_d"style="width:400px; height:200px">HALLOOOOO!!!!</textarea>
+<script type="text/javascript">
+
+function formSubmit()
+{
+//document.getElementByID("input").value=infoeditor.getEditorContent();
+//document.getElementByName("input_O").value = "some value";
+frmElement = document.forms['frm1'];
+frmElement.elements["input_d"].value = infoeditor.getEditorContent();
+document.forms["frm1"].submit();
+}
+
+var infoeditor =new TINY.editor.edit('editor',{
+					id:'input',
+					width:584,
+					height:175,
+					cssclass:'te',
+					controlclass:'tecontrol',
+					rowclass:'teheader',
+					dividerclass:'tedivider',
+					controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|',
+							'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+							'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','n',
+							'font','size','style','|','image','hr','link','unlink','|','cut','copy','paste','print'],
+					footer:true,
+					fonts:['Verdana','Arial','Georgia','Trebuchet MS'],
+					xhtml:true,
+					cssfile:'style.css',
+					bodyid:'editor',
+					footerclass:'tefooter',
+					toggle:{text:'source',activetext:'wysiwyg',cssclass:'toggle'},
+					resize:{cssclass:'resize'}
+});
+
+
+</script>
+<input type="button" name="Name" value="Beschriftung" onclick="formSubmit();">
+</form>
+</body>
+</html>
